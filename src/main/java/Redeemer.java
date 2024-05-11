@@ -55,7 +55,7 @@ public class Redeemer {
         driver.findElement(By.cssSelector(".recaptcha-checkbox-border")).click();
         delay();
 
-        WebElement okButton = driver.findElement(By.id("btnOk"));
+        WebElement okButton = driver.findElement(By.cssSelector("a.btn-next.mx-2#btnOk"));
         okButton.click();
         delay();
     }

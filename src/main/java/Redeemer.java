@@ -2,7 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Redeemer {
     public static void main(String[] args) {
@@ -55,9 +59,12 @@ public class Redeemer {
         driver.findElement(By.cssSelector(".recaptcha-checkbox-border")).click();
         delay();
 
-        WebElement okButton = driver.findElement(By.cssSelector("a.btn-next.mx-2#btnOk"));
+        // Wait for the "ถัดไป" anchor element to be clickable
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        WebElement okButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.pt-4.col-8.text-center > a.btn-next.mx-2")));
+
+        // Click on the "btnOk" element
         okButton.click();
-        delay();
     }
 
     private static void delay() {
